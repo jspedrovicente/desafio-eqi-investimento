@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Front-End Desafio</title>
+    <meta charset="utf-8">
+    <meta name="Author" content="José Vicente">
+    <meta name="Description" content="conteudo, inicio">
+    <link href="./style.css" rel="stylesheet">
+    <script src="https://unpkg.com/imask"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <header class="title">Simulador de Investimentos</header>
+    <div class="content-container">
+        <div class="left-side-container">
+            <div class="title-simulator"> Simulador</div>
+            <form>
+                <div class="form-section-all">
+                    <div class="form-section form-section-first">
+                        <div class="title-form">
+                            <p>Rendimento</p>
+                            <div class="information-icon">&#9432</div>
+                        </div>
+                        <div class="radio">
+                            <div id="tipo-rendimento-bruto" class="radio-button styled-radio styled-radio-left selected"
+                                value="bruto">
+                                Bruto
+                            </div>
+
+                            <div id="tipo-rendimento-liquido" class="radio-button styled-radio styled-radio-right"
+                                value="liquido">
+                                Liquido
+                            </div>
+                            <input name="rendimento" type="hidden" class="form-input" value="bruto">
+                        </div>
+
+                        <div class="form-input-box">
+                            <label class="form-input-label" for="aporteInicial">Aporte Inicial</label>
+                            <input class="form-input clear-form-input form-input-currency" name="aporte-inicial"
+                                id="aporteInicial">
+                            <span class="error-message"> Aporte deve ser um número</span>
+                        </div>
+                        <div class="form-input-box">
+                            <label class="form-input-label" for="prazo">Prazo em Meses</label>
+                            <input class="form-input clear-form-input form-input-month" id="prazo" name="prazo">
+                            <span class="error-message"> Prazo deve ser um número entre 1 e 120</span>
+                        </div>
+                        <div class="form-input-box">
+                            <label class="form-input-label" for="ipca">IPCA (ao ano)</label>
+                            <input class="form-input form-input-percentage" id="ipca" name="ipca"
+                                readonly value="10.06%">
+                            <span class="error-message"> IPCA deve ser uma porcentagem</span>
+                        </div>
+
+                    </div>
+
+                    <div class="form-section form-section-second">
+                        <div class="title-form">
+                            <p>Tipos de Indexação</p>
+                            <div class="information-icon">&#9432</div>
+                        </div>
+                        <div class="radio">
+                            <div class="radio-button styled-radio styled-radio-left selected" value="pre"> Pré
+                            </div>
+                            <div class="radio-button styled-radio styled-radio-center" value="pos"> Pós
+                            </div>
+                            <div class="radio-button styled-radio styled-radio-right" value="ipca"> Fixado
+                            </div>
+                            <input name="indexacao" type="hidden" class="form-input" value="pre">
+                        </div>
+                        <div class="form-input-box">
+                            <label for="aporteMensal">Aporte Mensal</label>
+                            <input class="form-input clear-form-input form-input-currency" id="aportaMensal"
+                                name="aporte-mensal">
+                            <span class="error-message"> Aporte deve ser um número</span>
+                        </div>
+                        <div class="form-input-box">
+                            <label for="rentabilidade">Rentabilidade</label>
+                            <input class="form-input clear-form-input form-input-percentage" id="rentabilidade"
+                                name="rentabilidade">
+                            <span class="error-message"> Rentabilidade deve ser uma porcentagem</span>
+                        </div>
+                        <div class="form-input-box">
+                            <label for="cdi">CDI(ao ano)</label>
+                            <input class="form-input form-input-percentage" id="cdi" name="cdi"
+                                readonly value="9,15%">
+                            <span class="error-message"> CDI deve ser uma porcentagem</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <div class="button button-clear" onclick="clearInputs()">Limpar Campos</div>
+                    <div class="button button-simulate" onclick="generateSimulation()">Simular</div>
+                </div>
+            </form>
+        </div>
+        <div class="right-side-container">
+            <div class="title-simulator title-resultado-simulador"> Resultado da Simulação</div>
+            <div class="result-outer-container">
+                <div class="result-container">
+                    <div class="result-container-title">Valor Final Bruto</div>
+                    <div class="result-container-value valor-final-bruto-result"></div>
+                </div>
+                <div class="result-container">
+                    <div class="result-container-title">Aliquota do IR</div>
+                    <div class="result-container-value aliquota-ir-result"></div>
+                </div>
+                <div class="result-container">
+                    <div class="result-container-title">Valor Pago em IR</div>
+                    <div class="result-container-value valor-pago-ir-result"></div>
+                </div>
+                <div class="result-container">
+                    <div class="result-container-title">Valor Final Liquido</div>
+                    <div class="result-container-value valor-final-liquido-result"></div>
+                </div>
+                <div class="result-container">
+                    <div class="result-container-title">Valor Total Investido</div>
+                    <div class="result-container-value valor-total-investido-result"></div>
+                </div>
+                <div class="result-container">
+                    <div class="result-container-title">Ganho Líquido</div>
+                    <div class="result-container-value ganho-liquido-result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./limpar-campos.js"></script>
+    <script src="./radio-groups.js"></script>
+    <script src="./mask-setup.js"></script>
+    <script src="./submit.js"></script>
+</body>
+
+</html>

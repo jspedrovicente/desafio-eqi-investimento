@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "rodar-front": "npm install && node ./node_modules/http-server/bin/http-server public"
+    },
+    "dependencies": {
+        "http-server": "^14.1.0"
+    }
+}
